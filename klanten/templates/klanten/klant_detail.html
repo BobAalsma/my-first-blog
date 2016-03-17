@@ -1,0 +1,18 @@
+{% extends 'klanten/basis.html' %}
+
+{% block content %}
+    <div class="post">
+		{% if user.is_authenticated %}
+		<a class="btn btn-default" href="{% url 'klant_edit' pk=klant.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		<a class="btn btn-default" href="{% url 'klant_remove' pk=klant.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+		{% else %}
+		<a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+		{% endif %}
+        <h1>{{ klant.naam }}</h1>
+        <p>uit {{ klant.woonplaats }}</p>
+		<p>contactpersoon is {{ klant.verantwoordelijke }}</p>
+		</br>
+		<p>toegevoegd door {{ klant.author }}</p>
+		<p>op {{ klant.created_date }}</p>
+    </div>
+{% endblock %}

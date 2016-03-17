@@ -1,19 +1,13 @@
-<html>
-    <head>
-        <title>Django Klanten en zo</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
-        </div>
+{% extends 'klanten/basis.html' %}
 
-		{% for klant in klanten %}
-	    <div>
-	        <p>published: {{ klant.created_date }}</p>
-	        <h1><a href="">{{ klant.naam }}</a></h1>
-	        <p>{{ klant.verantwoordelijke|linebreaks }}</p>
-	    </div>
-		{% endfor %}
-		
-    </body>
-</html>
+{% block content %}	
+	{% for klant in klanten %}
+	<div class="post">
+		<div class="date">
+			<p>aanmaak: {{ klant.created_date }}</p>
+		</div>
+		<h1><a href="{% url 'klant_detail' pk=klant.pk %}">{{ klant.naam }}</a></h1>
+		<p>{{ klant.verantwoordelijke }}</p>
+	</div>
+	{% endfor %}
+{% endblock %}
