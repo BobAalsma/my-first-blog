@@ -20,12 +20,12 @@ class Klant(models.Model):
     
     author = models.ForeignKey('auth.User')
     naam = models.CharField('organisatie', max_length=200)
-    naam = models.CharField('woomplaats', max_length=200)
-    naam = models.CharField('verantwoordelijke', max_length=200)
+    woonplaats = models.CharField('woomplaats', max_length=200, default='Utercht')
+    verantwoordelijke = models.CharField('verantwoordelijke', max_length=200,default='Joop')
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.title
+        return self.naam
         
     class Meta:
         verbose_name_plural = 'klanten'
